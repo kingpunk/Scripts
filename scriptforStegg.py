@@ -16,11 +16,15 @@ import cv2
 import numpy as np
 import random
 import stegano
+<<<<<<< HEAD
 import string
+=======
+>>>>>>> 7f57d6394d4f3c131e6b2c92a80cd28992c218f0
 
 verbose = False
 
 def generateRandomString(randomTextSize):
+<<<<<<< HEAD
     lowerCaseLetters = string.ascii_lowercase
     uppderCaseLetters = string.ascii_uppercase
     letters= string.ascii_letters
@@ -33,6 +37,18 @@ def generateRandomString(randomTextSize):
 
     for i in range(randomTextSize):
         text += ''.join([random.choice(i) for i in all])
+=======
+    nouns = ("puppy", "car", "rabbit", "girl", "monkey")
+    verbs = ("runs", "hits", "jumps", "drives", "barfs")
+    adv = ("crazily.", "dutifully.", "foolishly.", "merrily.", "occasionally.")
+    adj = ("adorable", "clueless", "dirty", "odd", "stupid")
+    all = [nouns, verbs, adj, adv]
+
+    text = ''
+
+    for i in range(randomTextSize):
+        text += ' '.join([random.choice(i) for i in all])
+>>>>>>> 7f57d6394d4f3c131e6b2c92a80cd28992c218f0
     
     return text
 
@@ -57,9 +73,16 @@ def encode(ImageName,randomTextSize,outputLocation,Filename):
         #get maximum bytes to encode
         n_byte = image.shape[0] * image.shape[1] * 3 // 8
         file, ext = Filename[count].split(".")
+<<<<<<< HEAD
         print("stegging "+ file+"."+ext+" in progess....")
         #print("Maximum bytes to encode for "+ file+"."+ext+" is "+n_byte)
         print("\n")
+=======
+        if verbose:
+            print("stegging "+ file+"."+ext+" in progess....")
+            print("Maximum bytes to encode for "+ file+"."+ext+" is "+n_byte)
+            print("\n")
+>>>>>>> 7f57d6394d4f3c131e6b2c92a80cd28992c218f0
  
         
         #Generate secreat message
