@@ -28,20 +28,20 @@ import glob
 
 #127 to 210 not rotate
 categories = ["NORMAL","STEGGED"]
-algorithm = ["DCT","LSBRANDOM"]
-main_path = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\all_data_small_and_large\\"
-created_path = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\mix_large_set"
+
+main_path = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-SET\\dct\\all"
+created_path = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\NEW-set\\dct_dataset"
 
 
 
 
-train_path = main_path+"train"
-test_path = main_path+"test"
-validation_path = main_path+"valid"
+train_path = os.path.join(main_path,"train")
+test_path = os.path.join(main_path,"test")
+validation_path = os.path.join(main_path,"valid")
 
-histo_train = os.path.join(created_path,"mix_train_histrogram_features.pickle")
-histro_test = os.path.join(created_path,"mix_test_histrogram_features.pickle")
-histro_valid = os.path.join(created_path,"mix_valid_histrogram_features.pickle")
+histo_train = os.path.join(created_path,"new_train_histrogram_features.pickle")
+histro_test = os.path.join(created_path,"new_test_histrogram_features.pickle")
+histro_valid = os.path.join(created_path,"new_valid_histrogram_features.pickle")
 
 
 all_path = [train_path,test_path,validation_path]
@@ -58,6 +58,7 @@ def extract_historgram(image, mask=None):
     #normalize the histogram
     cv2.normalize(hist,hist)
     return hist.flatten()
+
 
 
 

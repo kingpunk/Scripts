@@ -23,7 +23,7 @@ def generateRandomString(randomTextSize):
 
 
 print(generateRandomString(randomTextSize=100))
-"""
+
 import glob
 import os
 import random
@@ -31,7 +31,7 @@ import shutil
 
 path = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\all-images-cnn"
 os.chdir(path)
-"""
+
 if os.path.isdir(path) is True:
     os.chdir(path)
     os.makedirs("train\\normal")
@@ -40,7 +40,7 @@ if os.path.isdir(path) is True:
     os.makedirs("test\\stegged")
     print("working", path)
 
-"""
+
 
 for c in random.sample(glob.glob('cap*'), 439):
     shutil.move(c,'train\\normal')
@@ -54,7 +54,7 @@ for c in random.sample(glob.glob('stegged*'), 146):
 print(os.getcwd())
 
 
-"""
+
 from sklearn.model_selection import train_test_split 
 
 dir = 'C:\\Users\\pskavalekar\\Desktop\\DATASET\\CapturedDataset'
@@ -115,3 +115,4 @@ print(data)
 
 
 """
+
