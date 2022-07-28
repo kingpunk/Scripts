@@ -8,13 +8,13 @@ import matplotlib.pyplot as plt
 
 
 
-internet_data_set = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-SET\\small-set\\DCT\\all"
+internet_data_set = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-SET\\small-set\\LSB_RANDOM\\all"
 
 categories = ["NORMAL","STEGGED"]
 
-save_path = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\NEW-set\\dct_dataset"
+save_path = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\NEW-set\\lsb_random"
 
-histogram_path = os.path.join(save_path,"small_set_small.pickle")
+histogram_path = os.path.join(save_path,"small_set_small_resize.pickle")
 bins = 8
 
 

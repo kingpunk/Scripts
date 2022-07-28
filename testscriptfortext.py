@@ -106,13 +106,5 @@ print(data)
 #labels = labels.reshape(len(labels),1)
 
 #X_train, x_test, Y_train, y_test = train_test_split(features,labels,test_size=0.25)
-
-
-
-
-
-
-
-
 """
 
