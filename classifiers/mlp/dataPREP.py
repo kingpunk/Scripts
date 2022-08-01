@@ -29,8 +29,19 @@ import glob
 #127 to 210 not rotate
 categories = ["NORMAL","STEGGED"]
 
-main_path = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-SET\\dct\\all"
-created_path = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\NEW-set\\dct_dataset"
+lsb = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcb\\all"
+dct ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\dct\\all"
+lsbran ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcbran\\all"
+
+lsb_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\lsb\\small_set"
+lsbran_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\lsbRan\\small_set" 
+dct_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\dct\\small_set"
+
+dirs = [lsb,lsbran,dct]
+dirs_output = [lsb_output,lsbran_output,dct_output]
+
+main_path = dirs[2]
+created_path = dirs_output[2]
 
 
 
@@ -39,9 +50,9 @@ train_path = os.path.join(main_path,"train")
 test_path = os.path.join(main_path,"test")
 validation_path = os.path.join(main_path,"valid")
 
-histo_train = os.path.join(created_path,"new_train_histrogram_features.pickle")
-histro_test = os.path.join(created_path,"new_test_histrogram_features.pickle")
-histro_valid = os.path.join(created_path,"new_valid_histrogram_features.pickle")
+histo_train = os.path.join(created_path,"small_set_histogram_train.pickle")
+histro_test = os.path.join(created_path,"small_set_histogram_test.pickle")
+histro_valid = os.path.join(created_path,"small_set_histogram_valid.pickle")
 
 
 all_path = [train_path,test_path,validation_path]

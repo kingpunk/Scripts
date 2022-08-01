@@ -108,3 +108,28 @@ print(data)
 #X_train, x_test, Y_train, y_test = train_test_split(features,labels,test_size=0.25)
 """
 
+
+import scriptforStegg as sc
+
+total_size=(2176/8)*(4608/8)
+
+
+"""
+print(total_size)
+
+size = 100
+
+while True:
+    print("searhing with",size)
+    lenOFSize= len(sc.generateRandomString(size))
+    if (total_size-lenOFSize) < 10:
+        print(lenOFSize)
+        break
+    else:
+        print(total_size-lenOFSize)
+        size = size + 100
+
+"""
+
+lenOFsize = len(sc.generateRandomString(1000000))
+print(lenOFsize)
