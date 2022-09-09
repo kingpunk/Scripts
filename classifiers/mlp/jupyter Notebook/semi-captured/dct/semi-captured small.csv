@@ -1,7 +1,7 @@
 classifiers,Accuracy Small,MCC Small,F1 Small,Predicted Normal / Actual  Normal Images,Predicted stagged / Actual  Stagged Images
-knn,1.0,1.0,1.0,61/61,60/60
-svm_linear,1.0,1.0,1.0,61/61,60/60
-dt,1.0,1.0,1.0,61/61,60/60
-rf,1.0,1.0,1.0,61/61,60/60
-mlp,1.0,1.0,1.0,61/61,60/60
-stack,1.0,1.0,1.0,61/61,60/60
+knn,1.0,1.0,1.0,60/60,60/60
+svm_linear,1.0,1.0,1.0,60/60,60/60
+dt,1.0,1.0,1.0,60/60,60/60
+rf,1.0,1.0,1.0,60/60,60/60
+mlp,1.0,1.0,1.0,60/60,60/60
+stack,1.0,1.0,1.0,60/60,60/60
