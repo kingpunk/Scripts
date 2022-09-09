@@ -30,20 +30,30 @@ import glob
 #127 to 210 not rotate
 categories = ["NORMAL","STEGGED"]
 
-lsb = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcb\\all"
-dct ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\dct\\all"
-lsbran ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcbran\\all"
+"""
+C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcb\\all
+C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\dct\\all
+C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcbran\\all
 
-lsb_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\lsb\\small_set"
-lsbran_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\lsbRan\\small_set" 
-dct_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\dct\\small_set"
+C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\lsb\\small_set
+C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\lsbRan\\small_set
+C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\dct\\small_set
+
+"""
+
+lsb = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\GLOBAL_TEST_SET\\\\InternetSet\\mid\\LSB\\all"
+dct ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\GLOBAL_TEST_SET\\\\InternetSet\\mid\\DCT\\all"
+lsbran ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\GLOBAL_TEST_SET\\\\InternetSet\\mid\\LSBRan\\all"
+
+lsb_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\HISTOGRAM_FEATURE_EXTRACTION\\Completly internt set\\mid\\lsb"
+lsbran_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\HISTOGRAM_FEATURE_EXTRACTION\\Completly internt set\\mid\\lsbRan" 
+dct_output = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\HISTOGRAM_FEATURE_EXTRACTION\\Completly internt set\\mid\\dct"
 
 dirs = [lsb,lsbran,dct]
 dirs_output = [lsb_output,lsbran_output,dct_output]
 
-main_path = dirs[2]
-created_path = dirs_output[2]
-
+main_path = dirs[0]
+created_path = dirs_output[0]
 
 
 
@@ -51,9 +61,9 @@ train_path = os.path.join(main_path,"train")
 test_path = os.path.join(main_path,"test")
 validation_path = os.path.join(main_path,"valid")
 
-histo_train = os.path.join(created_path,"small_set_histogram_train.pickle")
-histro_test = os.path.join(created_path,"small_set_histogram_test.pickle")
-histro_valid = os.path.join(created_path,"small_set_histogram_valid.pickle")
+histo_train = os.path.join(created_path,"large_set_histogram_train.pickle")
+histro_test = os.path.join(created_path,"large_set_histogram_test.pickle")
+histro_valid = os.path.join(created_path,"large_set_histogram_valid.pickle")
 
 
 all_path = [train_path,test_path,validation_path]
@@ -71,7 +81,7 @@ def extract_historgram(image, mask=None):
     cv2.normalize(hist,hist)
     return hist.flatten()
 
-
+"""
 # HI Moments features extraction - Quantifies the shape of the images
 def hu_moments_extraction(image):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -89,7 +99,7 @@ def haralick_feature_extraction(image):
     # return the results
     return haralick_features
 
-
+"""
 for one_path in all_path:
 
     data = [] # features and its labels will be stored in this (historgram)
@@ -109,13 +119,13 @@ for one_path in all_path:
             # Global Feature extraction
             ####################################
             historgram_feature = extract_historgram(item_img)
-            harlick_feature = haralick_feature_extraction(item_img)
-            hu_movements = hu_moments_extraction(item_img)
+            #harlick_feature = haralick_feature_extraction(item_img)
+            #hu_movements = hu_moments_extraction(item_img)
             ####################################
             #Concatenate global features
             ####################################
-            global_features = np.hstack([historgram_feature,harlick_feature,hu_movements])
-            data.append([global_features,label])
+            #global_features = np.hstack([historgram_feature,harlick_feature,hu_movements])
+            data.append([historgram_feature,label])
 
     random.shuffle(data)
     print("[STATUS]! "+file_to_pickle[file_index]," file creating!")

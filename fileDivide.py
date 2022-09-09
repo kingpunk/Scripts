@@ -9,16 +9,16 @@ import random
 import shutil
 
 
-lsb = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcb\\all"
-dct ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\dct\\all"
-lsbran ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcbran\\all"
+dir = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\GLOBAL_TEST_SET\\Semi_capturedSet\\large\\LSB\\all"
+#dct ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\dct\\all"
+#lsbran ="C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\test 2\\lcbran\\all"
 
-dirs = [lsb,lsbran,dct]
+#dirs = [lsb,lsbran,dct]
 
 
-paths = dirs[2]
+#paths = dirs[2]
 
-print(paths)
+#print(paths)
 """
 if os.path.exists(paths):
 
@@ -58,30 +58,30 @@ if os.path.exists(paths):
     
 print("done")
 
-"""
 
-os.chdir(paths)
-if os.path.isdir(paths) is True:
-    os.makedirs(os.path.join(paths,"train\\NORMAL"))
-    os.makedirs(os.path.join(paths,"train\\STEGGED"))
-    os.makedirs(os.path.join(paths,"test\\NORMAL"))
-    os.makedirs(os.path.join(paths,"test\\STEGGED"))
-    os.makedirs(os.path.join(paths,"valid\\NORMAL"))
-    os.makedirs(os.path.join(paths,"valid\\STEGGED"))
+
+os.chdir(dir)
+if os.path.isdir(dir) is True:
+    os.makedirs(os.path.join(dir,"train\\NORMAL"))
+    os.makedirs(os.path.join(dir,"train\\STEGGED"))
+    os.makedirs(os.path.join(dir,"test\\NORMAL"))
+    os.makedirs(os.path.join(dir,"test\\STEGGED"))
+    os.makedirs(os.path.join(dir,"valid\\NORMAL"))
+    os.makedirs(os.path.join(dir,"valid\\STEGGED"))
     
-    for c in random.sample(glob.glob('normal *'), 480):
+    for c in random.sample(glob.glob('cap *'), 500):
         shutil.move(c,"train\\NORMAL")
-    for c in random.sample(glob.glob('stegged *'), 480):
+    for c in random.sample(glob.glob('stegged *'), 468):
         shutil.move(c,"train\\STEGGED")
     
-    for c in random.sample(glob.glob('normal *'), 60):
+    for c in random.sample(glob.glob('cap *'), 61):
         shutil.move(c,"test\\NORMAL")
-    for c in random.sample(glob.glob('stegged *'), 60):
+    for c in random.sample(glob.glob('stegged *'), 58):
         shutil.move(c,"test\\STEGGED")
     
-    for c in random.sample(glob.glob('normal *'), 60):
+    for c in random.sample(glob.glob('cap *'), 62):
         shutil.move(c,"valid\\NORMAL")
-    for c in random.sample(glob.glob('stegged *'), 60):
+    for c in random.sample(glob.glob('stegged *'), 59):
         shutil.move(c,"valid\\STEGGED")
 
 
@@ -89,7 +89,7 @@ print("done")
 
 
 
-"""
+
 
 if os.path.exists(dir):
 

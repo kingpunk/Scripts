@@ -107,14 +107,14 @@ print(data)
 
 #X_train, x_test, Y_train, y_test = train_test_split(features,labels,test_size=0.25)
 """
-
+"""
 
 import scriptforStegg as sc
 
 total_size=(2176/8)*(4608/8)
 
 
-"""
+
 print(total_size)
 
 size = 100
@@ -129,7 +129,28 @@ while True:
         print(total_size-lenOFSize)
         size = size + 100
 
-"""
 
 lenOFsize = len(sc.generateRandomString(1000000))
 print(lenOFsize)
+
+"""
+
+import importlib.util
+
+spec = importlib.util.spec_from_file_location("all_other_functions","classifiers\\mlp\\jupyter Notebook\\all_other_functions.py")
+
+foo = importlib.util.module_from_spec(spec)
+
+spec.loader.exec_module(foo)
+
+
+predicted_values = [0,0,0,0, 0 ,0, 1, 1, 0, 1, 0, 1, 1, 1, 1 ,0 ,1, 0 ,1, 1, 0, 1, 1, 1, 0 ,1 ,0 ,0, 1, 1, 0, 0 ,0 ,1 ,1, 0, 1]
+actual_values = [1 ,1, 0 ,0 ,0 ,0 ,1 ,1 ,0, 1, 0 ,1 ,1 ,1 ,0 ,0 ,1, 0 ,1, 1, 0, 1 ,1 ,1 ,0, 1 ,0 ,0 ,1, 1, 0 ,0 ,0 ,1 ,1 ,0, 1]
+
+normal_actual_and_predicted_list,stagg_actual_and_predicted_list = foo.drawchart(actual_values,predicted_values)
+
+print("Predicted correct normal Values: "+ str(normal_actual_and_predicted_list[0]))
+print("Actual normal Values: "+ str(normal_actual_and_predicted_list[1]))
+
+print("Predicted correct stagged Values: "+ str(stagg_actual_and_predicted_list[0]))
+print("Actual stagged Values: "+ str(stagg_actual_and_predicted_list[1]))

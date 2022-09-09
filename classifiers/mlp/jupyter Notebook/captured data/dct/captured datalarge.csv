@@ -1,0 +1,7 @@
+classifiers,Accuracy Large,MCC Large,F1-score Large,Predicted Normal / Actual  Normal Images,Predicted stagged / Actual  Stagged Images
+knn,1.0,1.0,1.0,59/59,58/58
+svm_linear,1.0,1.0,1.0,59/59,58/58
+dt,0.9829059829059829,0.9663648060558018,0.9828984855300644,59/59,56/58
+rf,1.0,1.0,1.0,59/59,58/58
+mlp,1.0,1.0,1.0,59/59,58/58
+stack,1.0,1.0,1.0,59/59,58/58

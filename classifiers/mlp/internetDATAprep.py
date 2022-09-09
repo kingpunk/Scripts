@@ -3,18 +3,19 @@ import random
 import os
 import cv2
 import pickle
+import mahotas
 from progress.bar import PixelBar
 import matplotlib.pyplot as plt
 
 
 
-internet_data_set = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\NEW-set-internet\\small-set\\DCT"
+internet_data_set = "C:\\Users\\pskavalekar\\Desktop\\DATASET\\GLOBAL_TEST_SET\\capturedSet\\mid\\LSBRan\\test2"
 
 categories = ["NORMAL","STEGGED"]
 
-save_path = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\new-set-completly-internet\\dct"
+save_path = "C:\\Users\\pskavalekar\\Desktop\\Scripts\\DATA\\HISTOGRAM_FEATURE_EXTRACTION\\Comptuerd_set\\mid\\lsbran"
 
-histogram_path = os.path.join(save_path,"small_set_small_resize.pickle")
+histogram_path = os.path.join(save_path,"global_mid_set_test2.pickle")
 bins = 8
 
 
@@ -29,9 +30,32 @@ def extract_historgram(image, mask=None):
     cv2.normalize(hist,hist)
     return hist.flatten()
 
+"""
+
+# HI Moments features extraction - Quantifies the shape of the images
+def hu_moments_extraction(image):
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    feature = cv2.HuMoments(cv2.moments(image)).flatten()
+    return feature
+
+
+# Haralick Texture - quantifies texture of the image
+
+def haralick_feature_extraction(image):
+    #convert the image to grayscale
+    gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    #compute the haralick texture feature vector
+    haralick_features = mahotas.features.haralick(gray).mean(axis=0)
+    # return the results
+    return haralick_features
+
+"""
+
+
+
 
 data = [] # features and its labels will be stored in this (historgram)
-pixelBar = PixelBar('Image Stagging',max=len(categories))
+pixelBar = PixelBar('GLobal Feature extraction',max=len(categories))
 for category in categories:
     path = os.path.join(internet_data_set,category)
     label = categories.index(category)
@@ -46,6 +70,12 @@ for category in categories:
         # Global Feature extraction
         ####################################
         historgram_feature = extract_historgram(item_img)
+       # harlick_feature = haralick_feature_extraction(item_img)
+       # hu_movements = hu_moments_extraction(item_img)
+        ####################################
+        #Concatenate global features
+        ####################################
+        #global_features = np.hstack([historgram_feature,harlick_feature,hu_movements])
         data.append([historgram_feature,label])
 
 pixelBar.finish()
