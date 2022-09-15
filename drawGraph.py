@@ -1,11 +1,10 @@
-
-
 import pandas as pd
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import matplotlib.style as ms
 
-
+ms.use('ggplot')
 internetlarge_name = 'internet set large.csv'
 interentmid_name ='internet set mid.csv'
 internetsmall_name = 'internet set small.csv'
@@ -34,7 +33,7 @@ original_path = 'C:\\Users\\kaval\\Documents\\University of plymouth - Masters P
 
 datasetIndex = 1
 all_name_index = 1
-algorithIndex = 0
+algorithIndex = 2
 
 dataset_path = os.path.join(original_path,datasetType[datasetIndex])
 algorithmPath = os.path.join(dataset_path,algorithm[algorithIndex])
@@ -46,9 +45,9 @@ df_large = pd.read_csv(os.path.join(algorithmPath,all_name_large[all_name_index]
 df_mid = pd.read_csv(os.path.join(algorithmPath,all_name_mid[all_name_index]))
 df_small = pd.read_csv(os.path.join(algorithmPath,all_name_small[all_name_index]))
 
-print(os.path.join(algorithmPath,all_name_small[all_name_index]))
 
-print(df_small)
+
+
 predicted_to_normal_ratio = 'Predicted Normal / Actual  Normal Images'
 predicted_to_stagg_ratio = 'Predicted stagged / Actual  Stagged Images'
 
@@ -78,8 +77,6 @@ def preProccing(values):
     for val in values:
         if val == 58:
             val = val + 2
-        elif val == 59:
-            val = val + 1
         elif val == 61:
             val = val - 1
         final_val.append(val)
@@ -90,13 +87,13 @@ def formatedPieChartValue(valuesNormalDataframe,valuesStaggedDataFrame,title):
     
     labels = ["knn","svm","DT","RF","MLP","Stack"]
     predictedNormal = seprateValue(valuesNormalDataframe)
-    predictedNormal = preProccing(predictedNormal)
+    #predictedNormal = preProccing(predictedNormal)
     valuesNormal = np.array(predictedNormal)
     totalN = sum(valuesNormal)
     #print(valuesNormal)
     
     predictedStagged = seprateValue(valuesStaggedDataFrame)
-    predictedStagged = preProccing(predictedStagged)
+    #predictedStagged = preProccing(predictedStagged)
     valuesStagged = np.array(predictedStagged)
     totalS = sum(valuesStagged)
     #print(valuesStagged)
@@ -178,12 +175,25 @@ def preProcessing(df,size):
     return df
 
 
+
+print(df_large)
+print(df_mid)
+print(df_small)
+
+
+
 df_large = preProcessing(df_large,size='Large')
 df_mid = preProcessing(df_mid,size='Mid')
 df_small = preProcessing(df_small,size='small')
 #print(df_large)
 #print(df_mid)
 #print(df_small)
+
+
+
+
+
+
 
 drawbarChart(dfchart=df_large,title="Large set")
 formatedPieChartValue(valuesRatioLargeNormalPredicted,valuesRatioLargeStaggedPredicted,title="Large set")
@@ -197,12 +207,11 @@ formatedPieChartValue(valuesRatioSmallNormalPredicted,valuesRatioSmallStaggedPre
 
 
 
-
-
-
-
-
 """
+
+
+
+
 
 #print(plt.__version__)
 
